@@ -4,7 +4,7 @@
 const MOVE = "pages/MOVE";
 const UPLOAD = "pages/UPLOAD";
 
-export const movePage = (page) => ({
+export const movePage = (page: string) => ({
   type: MOVE,
   payload: {
     page,

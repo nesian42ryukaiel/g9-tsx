@@ -12,13 +12,13 @@ export const editFile = (task) => ({
     task,
   },
 });
-export const editTitle = (task) => ({
+export const editTitle = (task: string) => ({
   type: EDIT_TITLE,
   payload: {
     task,
   },
 });
-export const editText = (task) => ({
+export const editText = (task: string) => ({
   type: EDIT_TEXT,
   payload: {
     task,

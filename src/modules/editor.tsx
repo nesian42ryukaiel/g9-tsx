@@ -5,10 +5,12 @@ const EDIT_FILE = "editor/FILE";
 const EDIT_TITLE = "editor/TITLE";
 const EDIT_TEXT = "editor/TEXT";
 
+/* A File object is a Blob object with a name attribute, which is a string */
+
 export const editClean = () => ({
   type: EDIT_CLEAN,
 });
-export const editFile = (task) => ({
+export const editFile = (task: File | Blob) => ({
   type: EDIT_FILE,
   payload: {
     task,

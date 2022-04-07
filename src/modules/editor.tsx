@@ -1,3 +1,5 @@
+import { Action } from "../types/types";
+
 const EDIT_CLEAN = "editor/CLEAN";
 const EDIT_FILE = "editor/FILE";
 const EDIT_TITLE = "editor/TITLE";
@@ -31,7 +33,7 @@ const initialState = {
   etext: "",
 };
 
-export default function editor(state = initialState, action) {
+export default function editor(state = initialState, action: Action) {
   switch (action.type) {
     case EDIT_CLEAN:
       return {

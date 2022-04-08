@@ -32,7 +32,7 @@ const configureStoreAsync2 = async () => {
     const store = createStore(rootReducer, initialState);
     resolve(store);
   }
-}
+};
 
 function configureStoreAsync() {
   return new Promise((resolve) => {

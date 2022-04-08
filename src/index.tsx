@@ -29,6 +29,8 @@ const configureStoreAsync2 = async () => {
     resolve(store);
   } catch (error) {
     console.log(error);
+    const store = createStore(rootReducer, initialState);
+    resolve(store);
   }
 }
 
@@ -69,7 +71,7 @@ function configureStoreAsync() {
   });
 }
 
-configureStoreAsync().then((result) => {
+configureStoreAsync().then((result: any) => {
   const store = result;
   console.log(store.getState());
   console.log(

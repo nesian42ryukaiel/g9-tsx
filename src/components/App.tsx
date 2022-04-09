@@ -20,8 +20,16 @@ type AppProps = {
   move: Function;
 };
 
+type PageListType = {
+  [index: string]: JSX.Element; // Index Signature: let's you use string index
+  index: JSX.Element;
+  upload: JSX.Element;
+  login: JSX.Element;
+  signup: JSX.Element;
+};
+
 function App({ page, colormode, move }: AppProps) {
-  const pagelist = {
+  const pagelist: PageListType = {
     index: <MainContainer />,
     upload: <UploadContainer />,
     login: <LoginContainer />,
@@ -29,7 +37,7 @@ function App({ page, colormode, move }: AppProps) {
   };
   return (
     <>
-      <div className="App" colormode={colormode}>
+      <div className="App" data-colormode={colormode}>
         <HeaderContainer />
         {pagelist[page]}
         <NavContainer />

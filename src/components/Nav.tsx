@@ -1,7 +1,15 @@
 import React from "react";
 import Article from "./Article";
+import type { ArticleType } from "../modules/pages";
 
-function Nav({ articles, loggedin, move, onlogout }) {
+type NavProps = {
+  articles: ArticleType[];
+  loggedin: boolean;
+  move: Function;
+  onlogout: Function;
+};
+
+function Nav({ articles, loggedin, move, onlogout }: NavProps) {
   let revart = articles.slice().reverse();
   const onLogoutClick = () => {
     alert("LOGOUT!");

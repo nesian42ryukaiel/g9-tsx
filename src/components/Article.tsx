@@ -1,6 +1,13 @@
-import React from "react";
+// import React from "react";
 
-function Article({ title, image, text, location }) {
+type ArticleProps = {
+  title: string;
+  image: string;
+  text: string;
+  location: string;
+};
+
+function Article({ title, image, text, location }: ArticleProps) {
   return (
     <article className={`Article`}>
       {location === "Main__articles" || location === "main__articles" ? (

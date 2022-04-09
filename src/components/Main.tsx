@@ -1,7 +1,10 @@
-import React from "react";
+// import React from "react";
 import Article from "./Article";
+import type { ArticleType } from "../modules/pages";
 
-function Main({ articles, loggedin, move }) {
+type MainProps = { articles: ArticleType[]; loggedin: boolean; move: Function };
+
+function Main({ articles, loggedin, move }: MainProps) {
   const revart = articles.length > 0 ? articles.slice().reverse() : [];
   const newPost = () => {
     move("upload");

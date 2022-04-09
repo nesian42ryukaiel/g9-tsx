@@ -12,7 +12,7 @@ export const uploadPage = (article: any) => ({
   payload: article,
 });
 
-type ArticleType = {
+export type ArticleType = {
   id: number;
   image: string;
   text: string;

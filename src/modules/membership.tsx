@@ -1,5 +1,5 @@
-
 import Base64 from "./Base64";
+import { Action } from "../types/types";
 
 const INPUT_ID = "membership/ID";
 const INPUT_PASS = "membership/PASS";
@@ -8,7 +8,7 @@ const LOGIN = "membership/LOGIN";
 const LOGOUT = "membership/LOGOUT";
 const SIGNUP = "membership/SIGNUP";
 
-export const inputID = (task: string) => ({
+export const inputID = (task: string): Action<string, string> => ({
   type: INPUT_ID,
   payload: {
     task,
@@ -39,14 +39,24 @@ export const signup = () => ({
   type: SIGNUP,
 });
 
-const initialState = {
+type MembershipState = {
+  mlogin: boolean;
+  mid: string;
+  mpw: string;
+  mname: string;
+};
+
+const initialState: MembershipState = {
   mlogin: false,
   mid: "",
   mpw: "",
   mname: "",
 };
 
-export default function membership(state = initialState, action: object) {
+export default function membership(
+  state = initialState,
+  action: Action<string, any>
+): MembershipState {
   switch (action.type) {
     case INPUT_ID:
       return {

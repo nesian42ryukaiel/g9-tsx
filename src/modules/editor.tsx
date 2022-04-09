@@ -7,10 +7,10 @@ const EDIT_TEXT = "editor/TEXT";
 
 /* A File object is a Blob object with a name attribute, which is a string */
 
-export const editClean = () => ({
+export const editClean = (): Action<string> => ({
   type: EDIT_CLEAN,
 });
-export const editFile = (task: File | Blob) => ({
+export const editFile = (task: File | Blob): Action<string, Object> => ({
   type: EDIT_FILE,
   payload: {
     task,
@@ -29,13 +29,22 @@ export const editText = (task: string) => ({
   },
 });
 
-const initialState = {
+type EditorState = {
+  efile: File[] | Blob[];
+  etitle: string;
+  etext: string;
+};
+
+const initialState: EditorState = {
   efile: [],
   etitle: "",
   etext: "",
 };
 
-export default function editor(state = initialState, action: Action) {
+export default function editor(
+  state = initialState,
+  action: Action<string, any>
+): EditorState {
   switch (action.type) {
     case EDIT_CLEAN:
       return {

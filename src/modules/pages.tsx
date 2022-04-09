@@ -1,5 +1,4 @@
-// import axios from "axios";
-// import { pServerLink, artdata } from "../pseudoLinks/links";
+import { Action } from "../types/types";
 
 const MOVE = "pages/MOVE";
 const UPLOAD = "pages/UPLOAD";

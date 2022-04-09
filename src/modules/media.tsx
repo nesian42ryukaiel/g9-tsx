@@ -1,14 +1,23 @@
+import { Action } from "../types/types";
+
 const MEDIA_TOGGLE = "media/toggle";
 
-export const mediaToggle = () => ({
+export const mediaToggle = (): Action<string> => ({
   type: MEDIA_TOGGLE,
 });
 
-const initialState = {
+type MediaState = {
+  mediaColorMode: string;
+};
+
+const initialState: MediaState = {
   mediaColorMode: "dark",
 };
 
-export default function media(state = initialState, action) {
+export default function media(
+  state = initialState,
+  action: Action<string, any>
+): MediaState {
   switch (action.type) {
     case MEDIA_TOGGLE:
       if (state.mediaColorMode === "light") {

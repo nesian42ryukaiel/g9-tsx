@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import App from "../components/App";
 import { movePage } from "../modules/pages";

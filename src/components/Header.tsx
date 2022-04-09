@@ -1,7 +1,15 @@
-import React from "react";
+// import React from "react";
 import Emoji from "./Emoji";
 
-function Header({ loggedin, id, colormode, moveFunc, swapcolor }) {
+type HeaderProps = {
+  loggedin: boolean;
+  id: string;
+  colormode: string;
+  moveFunc: Function;
+  swapcolor: Function;
+};
+
+function Header({ loggedin, id, colormode, moveFunc, swapcolor }: HeaderProps) {
   const colorModeIcon =
     colormode === "light" ? (
       <Emoji symbol="🌙" label="moon" />

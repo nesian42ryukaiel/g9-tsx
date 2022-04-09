@@ -1,7 +1,12 @@
 import axios from "axios";
 import { pServerLink } from "../pseudoLinks/links";
 
-export default async function registerMember(id, pw, name, doSignup) {
+export default async function registerMember(
+  id: string,
+  pw: string,
+  name: string,
+  doSignup: boolean[]
+) {
   const newmem = {
     [id]: {
       id: id,

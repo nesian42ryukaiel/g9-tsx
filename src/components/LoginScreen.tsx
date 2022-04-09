@@ -1,6 +1,16 @@
 import React from "react";
 import checkAuth from "../modules/checkAuth";
 
+type LoginProps = {
+  loggedin: boolean;
+  reqid: string;
+  reqpw: string;
+  onInputID: Function;
+  onInputPass: Function;
+  onLogin: Function;
+  move: Function;
+};
+
 export default function LoginScreen({
   loggedin,
   reqid,
@@ -9,11 +19,11 @@ export default function LoginScreen({
   onInputPass,
   onLogin,
   move,
-}) {
-  const onChangeUserID = (e) => {
+}: LoginProps) {
+  const onChangeUserID = (e: React.ChangeEvent<HTMLInputElement>) => {
     onInputID(e.target.value);
   };
-  const onChangeUserPW = (e) => {
+  const onChangeUserPW = (e: React.ChangeEvent<HTMLInputElement>) => {
     onInputPass(e.target.value);
   };
   const onClickLogin = () => {

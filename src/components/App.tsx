@@ -8,7 +8,19 @@ import UploadContainer from "../containers/UploaderContainer";
 import LoginContainer from "../containers/LoginContainer";
 import SignupContainer from "../containers/SignupContainer";
 
-function App({ page, colormode, move }) {
+/**
+ * https://react.vlpt.us/using-typescript/02-ts-react-basic.html
+ *
+ * How to make TypeScript components
+ */
+
+type AppProps = {
+  page: string;
+  colormode: string;
+  move: Function;
+};
+
+function App({ page, colormode, move }: AppProps) {
   const pagelist = {
     index: <MainContainer />,
     upload: <UploadContainer />,

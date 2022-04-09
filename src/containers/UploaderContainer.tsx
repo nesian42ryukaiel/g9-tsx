@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Uploader from "../components/Uploader";
 import { movePage, uploadPage } from "../modules/pages";
 import { editFile, editTitle, editText, editClean } from "../modules/editor";
+import type { ArticleType } from "../modules/pages";
 
 function UploadContainer() {
   const { mid, efile, etitle, etext } = useSelector((state: any) => ({
@@ -13,11 +14,11 @@ function UploadContainer() {
   }));
   const dispatch = useDispatch();
   const move = (page: string) => dispatch(movePage(page));
-  const upload = (article) => dispatch(uploadPage(article));
+  const upload = (article: ArticleType) => dispatch(uploadPage(article));
   const cleanup = () => dispatch(editClean());
   const setFile = (file) => dispatch(editFile(file));
-  const setTitle = (title) => dispatch(editTitle(title));
-  const setText = (text) => dispatch(editText(text));
+  const setTitle = (title: string) => dispatch(editTitle(title));
+  const setText = (text: string) => dispatch(editText(text));
   return (
     <Uploader
       mid={mid}

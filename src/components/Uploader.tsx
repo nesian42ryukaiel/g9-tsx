@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { pServerLink } from "../pseudoLinks/links";
 import Base64 from "../modules/Base64";
+// import type { ArticleType } from "../modules/pages";
 
 type UploaderProps = {
   mid: string;
@@ -39,7 +40,7 @@ function Uploader({
   const onTextType = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
-  const onSubmit = (e: React.MouseEventHandler<HTMLButtonElement>) => {
+  const onSubmit = () => {
     console.log("Now testing FormData creation: ");
     const uploadForm = new FormData();
     if (efile instanceof File) {

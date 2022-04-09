@@ -5,16 +5,16 @@ import { inputID, inputPass, login } from "../modules/membership";
 import { movePage } from "../modules/pages";
 
 function LoginContainer() {
-  const { loggedin, reqid, reqpw } = useSelector((state) => ({
+  const { loggedin, reqid, reqpw } = useSelector((state: any) => ({
     loggedin: state.membership.mlogin,
     reqid: state.membership.mid,
     reqpw: state.membership.mpw,
   }));
   const dispatch = useDispatch();
-  const onInputID = (input) => dispatch(inputID(input));
-  const onInputPass = (input) => dispatch(inputPass(input));
+  const onInputID = (input: string) => dispatch(inputID(input));
+  const onInputPass = (input: string) => dispatch(inputPass(input));
   const onLogin = () => dispatch(login());
-  const move = (page) => dispatch(movePage(page));
+  const move = (page: string) => dispatch(movePage(page));
   return (
     <LoginScreen
       loggedin={loggedin}

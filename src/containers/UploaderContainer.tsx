@@ -5,14 +5,14 @@ import { movePage, uploadPage } from "../modules/pages";
 import { editFile, editTitle, editText, editClean } from "../modules/editor";
 
 function UploadContainer() {
-  const { mid, efile, etitle, etext } = useSelector((state) => ({
+  const { mid, efile, etitle, etext } = useSelector((state: any) => ({
     mid: state.membership.mid,
     efile: state.editor.efile,
     etitle: state.editor.etitle,
     etext: state.editor.etext,
   }));
   const dispatch = useDispatch();
-  const move = (page) => dispatch(movePage(page));
+  const move = (page: string) => dispatch(movePage(page));
   const upload = (article) => dispatch(uploadPage(article));
   const cleanup = () => dispatch(editClean());
   const setFile = (file) => dispatch(editFile(file));

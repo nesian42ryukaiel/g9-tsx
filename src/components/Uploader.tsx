@@ -3,6 +3,19 @@ import axios from "axios";
 import { pServerLink } from "../pseudoLinks/links";
 import Base64 from "../modules/Base64";
 
+type UploaderProps = {
+  mid: string;
+  efile: File[] | Blob[];
+  etitle: string;
+  etext: string;
+  move: Function;
+  upload: Function;
+  cleanup: Function;
+  setFile: Function;
+  setTitle: Function;
+  setText: Function;
+};
+
 function Uploader({
   mid,
   efile,
@@ -14,19 +27,19 @@ function Uploader({
   setFile,
   setTitle,
   setText,
-}) {
+}: UploaderProps) {
   const onFileLoad = (e) => {
     setFile(e.target.files[0]);
     console.log(efile);
     console.log(efile.filePath);
   };
-  const onTitleType = (e) => {
+  const onTitleType = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   };
-  const onTextType = (e) => {
+  const onTextType = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
-  const onSubmit = (e) => {
+  const onSubmit = (e: React.MouseEventHandler<HTMLButtonElement>) => {
     console.log("Now testing FormData creation: ");
     const uploadForm = new FormData();
     if (efile instanceof File) {

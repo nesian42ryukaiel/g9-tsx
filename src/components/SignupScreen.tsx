@@ -2,6 +2,18 @@ import React from "react";
 import checkAuth from "../modules/checkAuth";
 import registerMember from "../modules/registerMember";
 
+type SignupProps = {
+  loggedin: boolean;
+  reqid: string;
+  reqpw: string;
+  reqnm: string;
+  onInputID: Function;
+  onInputPass: Function;
+  onInputName: Function;
+  onSignup: Function;
+  move: Function;
+};
+
 export default function SignupScreen({
   loggedin,
   reqid,
@@ -12,14 +24,14 @@ export default function SignupScreen({
   onInputName,
   onSignup,
   move,
-}) {
-  const onChangeUserID = (e) => {
+}: SignupProps) {
+  const onChangeUserID = (e: React.ChangeEvent<HTMLInputElement>) => {
     onInputID(e.target.value);
   };
-  const onChangeUserPW = (e) => {
+  const onChangeUserPW = (e: React.ChangeEvent<HTMLInputElement>) => {
     onInputPass(e.target.value);
   };
-  const onChangeUserName = (e) => {
+  const onChangeUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
     onInputName(e.target.value);
   };
   const onClickSignup = () => {

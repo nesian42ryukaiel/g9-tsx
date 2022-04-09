@@ -10,32 +10,26 @@ const SIGNUP = "membership/SIGNUP";
 
 export const inputID = (task: string): Action<string, string> => ({
   type: INPUT_ID,
-  payload: {
-    task,
-  },
+  payload: task,
 });
-export const inputPass = (task: string) => {
+export const inputPass = (task: string): Action<string, string> => {
   task = Base64.encode(task);
   return {
     type: INPUT_PASS,
-    payload: {
-      task,
-    },
+    payload: task,
   };
 };
-export const inputName = (task: string) => ({
+export const inputName = (task: string): Action<string, string> => ({
   type: INPUT_NAME,
-  payload: {
-    task,
-  },
+  payload: task,
 });
-export const login = () => ({
+export const login = (): Action<string> => ({
   type: LOGIN,
 });
-export const logout = () => ({
+export const logout = (): Action<string> => ({
   type: LOGOUT,
 });
-export const signup = () => ({
+export const signup = (): Action<string> => ({
   type: SIGNUP,
 });
 
@@ -61,17 +55,17 @@ export default function membership(
     case INPUT_ID:
       return {
         ...state,
-        mid: action.payload.task,
+        mid: action.payload,
       };
     case INPUT_PASS:
       return {
         ...state,
-        mpw: action.payload.task,
+        mpw: action.payload,
       };
     case INPUT_NAME:
       return {
         ...state,
-        mname: action.payload.task,
+        mname: action.payload,
       };
     case LOGIN:
       if (state.mlogin === true) {

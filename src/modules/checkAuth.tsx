@@ -2,7 +2,12 @@ import axios from "axios";
 import Base64 from "./Base64";
 import { pServerLink } from "../pseudoLinks/links";
 
-export default function checkAuth(id, pw, name, auth) {
+export default function checkAuth(
+  id: string,
+  pw: string,
+  name: string,
+  auth: boolean[]
+) {
   const tok = id + ":" + pw + ":" + name;
   const hash = Base64.encode(tok);
   const Basic = "Basic " + hash;

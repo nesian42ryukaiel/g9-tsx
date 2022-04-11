@@ -6,26 +6,26 @@ import Base64 from "../modules/Base64";
 
 type UploaderProps = {
   mid: string;
-  efile: File | Blob;
+  // efile: File | Blob;
   etitle: string;
   etext: string;
   move: Function;
   upload: Function;
   cleanup: Function;
-  setFile: Function;
+  // setFile: Function;
   setTitle: Function;
   setText: Function;
 };
 
 function Uploader({
   mid,
-  efile,
+  // efile,
   etitle,
   etext,
   move,
   upload,
   cleanup,
-  setFile,
+  // setFile,
   setTitle,
   setText,
 }: UploaderProps) {

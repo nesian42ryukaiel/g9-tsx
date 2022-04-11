@@ -24,13 +24,13 @@ export const editText = (task: string): Action<string, string> => ({
 });
 
 type EditorState = {
-  efile: File[] | Blob[];
+  // efile: File[] | Blob[];
   etitle: string;
   etext: string;
 };
 
 const initialState: EditorState = {
-  efile: [],
+  // efile: [],
   etitle: "",
   etext: "",
 };
@@ -43,15 +43,15 @@ export default function editor(
     case EDIT_CLEAN:
       return {
         ...state,
-        efile: [],
+        // efile: [],
         etitle: "",
         etext: "",
       };
-    case EDIT_FILE:
-      return {
-        ...state,
-        efile: action.payload,
-      };
+    // case EDIT_FILE:
+    //   return {
+    //     ...state,
+    //     efile: action.payload,
+    //   };
     case EDIT_TITLE:
       return {
         ...state,

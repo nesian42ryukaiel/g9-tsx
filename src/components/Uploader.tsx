@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { TextareaHTMLAttributes, useEffect, useState } from "react";
 import axios from "axios";
 import { pServerLink } from "../pseudoLinks/links";
 import Base64 from "../modules/Base64";
+import { FileReadResult } from "node:fs/promises";
 // import type { ArticleType } from "../modules/pages";
 
 type UploaderProps = {
@@ -29,22 +30,38 @@ function Uploader({
   setTitle,
   setText,
 }: UploaderProps) {
-  const onFileLoad = (e) => {
-    setFile(e.target.files[0]);
-    console.log(efile);
-    console.log(efile.filePath);
+  const [UploaderFile, setUploaderFile] = useState<File>();
+  const [UploaderFileURL, setUploaderFileURL] = useState("");
+  const onFileLoad = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let TargetFile: File;
+    if (e.target.files) {
+      TargetFile = e.target.files[0];
+      setUploaderFile(TargetFile);
+      console.log(UploaderFile);
+      if (UploaderFile) {
+        // const reader = new FileReader();
+        // reader.readAsDataURL(UploaderFile);
+        // reader.onload = (e) => {
+        //   let newURL = reader.result;
+        //   if (newURL) setUploaderFileURL(newURL);
+        // };
+        // console.log(UploaderFile.filePath);
+        const newURL = URL.createObjectURL(UploaderFile);
+        if (newURL) setUploaderFileURL(newURL);
+      }
+    }
   };
   const onTitleType = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   };
-  const onTextType = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onTextType = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
   };
   const onSubmit = () => {
     console.log("Now testing FormData creation: ");
     const uploadForm = new FormData();
-    if (efile instanceof File) {
-      uploadForm.set("image", efile, Base64.encode(efile.name));
+    if (UploaderFile instanceof File) {
+      uploadForm.set("image", UploaderFile, Base64.encode(UploaderFile.name));
     } else {
       alert("Please upload a file!");
       return false;
@@ -88,8 +105,8 @@ function Uploader({
         console.error(err);
       });
   };
-  const cancelAndGoBack = (e) => {
-    setFile([]);
+  const cancelAndGoBack = () => {
+    // setFile([]);
     setTitle("");
     setText("");
     move("index");
@@ -104,10 +121,10 @@ function Uploader({
     <div className="Uploader centralize corefunc">
       <div className="focusBox">
         <div className="Uploader__preview">
-          {efile ? (
+          {UploaderFile ? (
             <>
-              <img src={efile.filePath} alt="" id="ul--output" width="256" />
-              <h3>{efile.fileName}</h3>
+              <img src={UploaderFileURL} alt="" id="ul--output" width="256" />
+              <h3>{UploaderFile.name}</h3>
             </>
           ) : (
             ""

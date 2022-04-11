@@ -6,7 +6,7 @@ import Base64 from "../modules/Base64";
 
 type UploaderProps = {
   mid: string;
-  efile: File[] | Blob[];
+  efile: File | Blob;
   etitle: string;
   etext: string;
   move: Function;

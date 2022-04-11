@@ -17,7 +17,7 @@ import SignupContainer from "../containers/SignupContainer";
 type AppProps = {
   page: string;
   colormode: string;
-  move: Function;
+  // move: Function;
 };
 
 type PageListType = {
@@ -28,7 +28,7 @@ type PageListType = {
   signup: JSX.Element;
 };
 
-function App({ page, colormode, move }: AppProps) {
+function App({ page, colormode }: AppProps) {
   const pagelist: PageListType = {
     index: <MainContainer />,
     upload: <UploadContainer />,

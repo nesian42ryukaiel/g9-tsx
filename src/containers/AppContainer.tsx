@@ -1,7 +1,7 @@
 // import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import App from "../components/App";
-import { movePage } from "../modules/pages";
+// import { movePage } from "../modules/pages";
 
 function AppContainer() {
   const { currentPage, colorMode } = useSelector((state: any) => ({
@@ -9,8 +9,8 @@ function AppContainer() {
     colorMode: state.media.mediaColorMode,
   }));
   const dispatch = useDispatch();
-  const move = (page: string) => dispatch(movePage(page));
-  return <App page={currentPage} colormode={colorMode} move={move} />;
+  // const move = (page: string) => dispatch(movePage(page));
+  return <App page={currentPage} colormode={colorMode} />;
 }
 
 export default AppContainer;

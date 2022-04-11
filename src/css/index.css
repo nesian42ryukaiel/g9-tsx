@@ -18,12 +18,12 @@
   --size-border: 4px;
   --font-size: 18px;
 }
-:root[colorTheme="dark"] {
+:root[data-colormode="dark"] {
   --color-fade: #252525;
   --color-focus: #454545;
   --color-text: #e0e0e0;
 }
-:root[colorTheme="light"] {
+:root[data-colormode="light"] {
   --color-fade: #dadada;
   --color-focus: #bababa;
   --color-text: #1f1f1f;

@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import ReactDOMClient from "react-dom/client";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "./modules/rootReducer";
@@ -36,18 +37,19 @@ const configureStoreAsync = async () => {
 
 configureStoreAsync().then((result: any) => {
   const store = result;
+  const container: any = document.getElementById("root");
+  const root = ReactDOMClient.createRoot(container);
   console.log(store.getState());
   console.log(
     "[DEBUG] redux store color mode:",
     store.getState().media.mediaColorMode
   );
-  return ReactDOM.render(
+  return root.render(
     <React.StrictMode>
       <Provider store={store}>
         <AppContainer />
       </Provider>
-    </React.StrictMode>,
-    document.getElementById("root")
+    </React.StrictMode>
   );
 });
 

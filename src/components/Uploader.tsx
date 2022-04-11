@@ -37,15 +37,7 @@ function Uploader({
     if (e.target.files) {
       TargetFile = e.target.files[0];
       setUploaderFile(TargetFile);
-      console.log(UploaderFile);
       if (UploaderFile) {
-        // const reader = new FileReader();
-        // reader.readAsDataURL(UploaderFile);
-        // reader.onload = (e) => {
-        //   let newURL = reader.result;
-        //   if (newURL) setUploaderFileURL(newURL);
-        // };
-        // console.log(UploaderFile.filePath);
         const newURL = URL.createObjectURL(UploaderFile);
         if (newURL) setUploaderFileURL(newURL);
       }

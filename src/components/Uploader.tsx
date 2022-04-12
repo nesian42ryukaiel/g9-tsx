@@ -29,19 +29,14 @@ function Uploader({
   setText,
 }: UploaderProps) {
   const [UploaderFile, setUploaderFile] = useState<File>();
-  // const [UploaderFileURL, setUploaderFileURL] = useState("");
   const onFileLoad = (e: React.ChangeEvent<HTMLInputElement>) => {
     let TargetFile: File;
+    let newURL: string;
     if (e.target.files) {
       TargetFile = e.target.files[0];
+      newURL = URL.createObjectURL(TargetFile);
       setUploaderFile(TargetFile);
-      if (UploaderFile) {
-        const newURL = URL.createObjectURL(UploaderFile);
-        // if (newURL) setUploaderFileURL(newURL);
-        setFile(newURL);
-        console.log(UploaderFile);
-        console.log(eprev);
-      }
+      setFile(newURL);
     }
   };
   const onTitleType = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -99,16 +94,12 @@ function Uploader({
       });
   };
   const cancelAndGoBack = () => {
-    // setFile([]);
     setTitle("");
     setText("");
     move("index");
   };
   useEffect(() => {
     console.log("[DEBUG]: rerendered with useEffect()");
-    // return () => {
-    //   console.log("업로드 컴포넌트가 화면에서 사라짐");
-    // };
   }, []);
   return (
     <div className="Uploader centralize corefunc">

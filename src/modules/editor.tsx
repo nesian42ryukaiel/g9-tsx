@@ -10,7 +10,7 @@ const EDIT_TEXT = "editor/TEXT";
 export const editClean = (): Action<string> => ({
   type: EDIT_CLEAN,
 });
-export const editFile = (task: File | Blob): Action<string, File | Blob> => ({
+export const editFile = (task: string): Action<string, string> => ({
   type: EDIT_FILE,
   payload: task,
 });
@@ -24,13 +24,13 @@ export const editText = (task: string): Action<string, string> => ({
 });
 
 type EditorState = {
-  // efile: File[] | Blob[];
+  eprev: string;
   etitle: string;
   etext: string;
 };
 
 const initialState: EditorState = {
-  // efile: [],
+  eprev: "",
   etitle: "",
   etext: "",
 };
@@ -43,15 +43,15 @@ export default function editor(
     case EDIT_CLEAN:
       return {
         ...state,
-        // efile: [],
+        eprev: "",
         etitle: "",
         etext: "",
       };
-    // case EDIT_FILE:
-    //   return {
-    //     ...state,
-    //     efile: action.payload,
-    //   };
+    case EDIT_FILE:
+      return {
+        ...state,
+        eprev: action.payload,
+      };
     case EDIT_TITLE:
       return {
         ...state,

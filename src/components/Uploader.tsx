@@ -1,37 +1,35 @@
-import React, { TextareaHTMLAttributes, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { pServerLink } from "../pseudoLinks/links";
 import Base64 from "../modules/Base64";
-import { FileReadResult } from "node:fs/promises";
-// import type { ArticleType } from "../modules/pages";
 
 type UploaderProps = {
   mid: string;
-  // efile: File | Blob;
+  eprev: string;
   etitle: string;
   etext: string;
   move: Function;
   upload: Function;
   cleanup: Function;
-  // setFile: Function;
+  setFile: Function;
   setTitle: Function;
   setText: Function;
 };
 
 function Uploader({
   mid,
-  // efile,
+  eprev,
   etitle,
   etext,
   move,
   upload,
   cleanup,
-  // setFile,
+  setFile,
   setTitle,
   setText,
 }: UploaderProps) {
   const [UploaderFile, setUploaderFile] = useState<File>();
-  const [UploaderFileURL, setUploaderFileURL] = useState("");
+  // const [UploaderFileURL, setUploaderFileURL] = useState("");
   const onFileLoad = (e: React.ChangeEvent<HTMLInputElement>) => {
     let TargetFile: File;
     if (e.target.files) {
@@ -39,7 +37,10 @@ function Uploader({
       setUploaderFile(TargetFile);
       if (UploaderFile) {
         const newURL = URL.createObjectURL(UploaderFile);
-        if (newURL) setUploaderFileURL(newURL);
+        // if (newURL) setUploaderFileURL(newURL);
+        setFile(newURL);
+        console.log(UploaderFile);
+        console.log(eprev);
       }
     }
   };
@@ -50,7 +51,7 @@ function Uploader({
     setText(e.target.value);
   };
   const onSubmit = () => {
-    console.log("Now testing FormData creation: ");
+    console.log("[DEBUG]: Now testing FormData creation: ");
     const uploadForm = new FormData();
     if (UploaderFile instanceof File) {
       uploadForm.set("image", UploaderFile, Base64.encode(UploaderFile.name));
@@ -104,18 +105,18 @@ function Uploader({
     move("index");
   };
   useEffect(() => {
-    console.log("업로드 컴포넌트가 화면에 나타남");
-    return () => {
-      console.log("업로드 컴포넌트가 화면에서 사라짐");
-    };
+    console.log("[DEBUG]: rerendered with useEffect()");
+    // return () => {
+    //   console.log("업로드 컴포넌트가 화면에서 사라짐");
+    // };
   }, []);
   return (
     <div className="Uploader centralize corefunc">
       <div className="focusBox">
         <div className="Uploader__preview">
-          {UploaderFile ? (
+          {UploaderFile && eprev !== "" ? (
             <>
-              <img src={UploaderFileURL} alt="" id="ul--output" width="256" />
+              <img src={eprev} alt="" id="ul--output" width="256" />
               <h3>{UploaderFile.name}</h3>
             </>
           ) : (

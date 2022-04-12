@@ -6,9 +6,9 @@ import { editFile, editTitle, editText, editClean } from "../modules/editor";
 import type { ArticleType } from "../modules/pages";
 
 function UploadContainer() {
-  const { mid, etitle, etext } = useSelector((state: any) => ({
+  const { mid, eprev, etitle, etext } = useSelector((state: any) => ({
     mid: state.membership.mid,
-    // efile: state.editor.efile,
+    eprev: state.editor.eprev,
     etitle: state.editor.etitle,
     etext: state.editor.etext,
   }));
@@ -16,19 +16,19 @@ function UploadContainer() {
   const move = (page: string) => dispatch(movePage(page));
   const upload = (article: ArticleType) => dispatch(uploadPage(article));
   const cleanup = () => dispatch(editClean());
-  // const setFile = (file: File) => dispatch(editFile(file));
+  const setFile = (file: string) => dispatch(editFile(file));
   const setTitle = (title: string) => dispatch(editTitle(title));
   const setText = (text: string) => dispatch(editText(text));
   return (
     <Uploader
       mid={mid}
-      // efile={efile}
+      eprev={eprev}
       etitle={etitle}
       etext={etext}
       move={move}
       upload={upload}
       cleanup={cleanup}
-      // setFile={setFile}
+      setFile={setFile}
       setTitle={setTitle}
       setText={setText}
     />

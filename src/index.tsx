@@ -1,14 +1,14 @@
 import React from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import ReactDOMClient from "react-dom/client";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
+import axios from "axios";
 import rootReducer from "./modules/rootReducer";
 import AppContainer from "./containers/AppContainer";
 import { pServerLink, artdata } from "./pseudoLinks/links";
-import axios from "axios";
 import "./css/index.css";
-import { resolve } from "node:path/win32";
+// import { resolve } from "node:path/win32";
 
 const configureStoreAsync = async () => {
   const initColorValue = localStorage.getItem("colormode");

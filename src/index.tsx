@@ -36,6 +36,7 @@ const configureStoreAsync = async () => {
 };
 
 configureStoreAsync().then((result: any) => {
+  // above line collides with Webpack
   const store = result;
   const container: any = document.getElementById("root");
   const root = ReactDOMClient.createRoot(container);

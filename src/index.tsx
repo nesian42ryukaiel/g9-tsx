@@ -35,10 +35,9 @@ const configureStoreAsync = async () => {
   }
 };
 
-configureStoreAsync().then((result: any) => {
-  // above line collides with Webpack
-  const store = result;
-  const container: any = document.getElementById("root");
+const renderAppAsync = async () => {
+  const store = await configureStoreAsync();
+  const container = document.getElementById("root");
   const root = ReactDOMClient.createRoot(container);
   console.log(store.getState());
   console.log(
@@ -52,7 +51,28 @@ configureStoreAsync().then((result: any) => {
       </Provider>
     </React.StrictMode>
   );
-});
+};
+
+renderAppAsync();
+
+// configureStoreAsync().then((result: any) => {
+//   // above line collides with Webpack
+//   const store = result;
+//   const container: any = document.getElementById("root");
+//   const root = ReactDOMClient.createRoot(container);
+//   console.log(store.getState());
+//   console.log(
+//     "[DEBUG] redux store color mode:",
+//     store.getState().media.mediaColorMode
+//   );
+//   return root.render(
+//     <React.StrictMode>
+//       <Provider store={store}>
+//         <AppContainer />
+//       </Provider>
+//     </React.StrictMode>
+//   );
+// });
 
 // function configureStoreAsync1() {
 //   return new Promise((resolve) => {

@@ -23,7 +23,8 @@
     "redux": "^4.1.2",
     "style-loader": "^3.3.1",
     "typescript": "^4.6.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "webpack-async-await": "^1.1.0"
   },
   "scripts": {
     "start": "export PORT=9090 && react-scripts start",
@@ -51,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.17.0",
     "fork-ts-checker-webpack-plugin": "^7.2.4",
     "ts-loader": "^9.2.8",
     "webpack-cli": "^4.9.2"

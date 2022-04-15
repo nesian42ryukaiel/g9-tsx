@@ -37,7 +37,7 @@ const configureStoreAsync = async () => {
 
 const renderAppAsync = async () => {
   const store = await configureStoreAsync();
-  const container = document.getElementById("root");
+  const container: HTMLElement = document.getElementById("root")!; // The ! means "trust me, this is not a null reference"
   const root = ReactDOMClient.createRoot(container);
   console.log(store.getState());
   console.log(
